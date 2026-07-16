@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mission Conference 2026 · Called. Equipped. Sent.</title>
+<meta name="description" content="Mission Conference 2026 — Ignite your faith. Impact the nations. Friday, November 13, 2026 · 7:00 PM · Texas A&M University, Aggie Park, College Station, TX. For youth & young adults. Register now — spots are limited." />
+
+<!-- ===== Open Graph / social ===== -->
+<meta property="og:title" content="Mission Conference 2026 · Called. Equipped. Sent." />
+<meta property="og:description" content="Ignite your faith. Impact the nations. One night can change your world. Nov 13, 2026 · Texas A&M University." />
+<meta property="og:type" content="website" />
+
+<!-- ===== Fonts ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet" />
+
+<!-- ===== Supabase JS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+  /* ============================================================
+     Mission Conference 2026
+     Palette: navy #0c1c34 · orange #f26722 · cream #f3efe6
+     ============================================================ */
+  :root{
+    --navy:#0c1c34;
+    --navy-2:#0a1729;
+    --navy-3:#132846;
+    --orange:#f26722;
+    --orange-light:#ff8a4c;
+    --cream:#f3efe6;
+    --cream-dim:#c9c6bf;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    background:var(--navy);
+    color:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+  h1,h2,h3,.condensed{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;line-height:.95}
+  .impact{font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:.5px}
+  .brush{font-family:"Permanent Marker",cursive;text-transform:uppercase}
+
+  .accent{color:var(--orange)}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+  .reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(20px,5vw,48px);
+    transition:background .3s var(--ease),padding .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  header.nav.scrolled{background:rgba(10,23,41,.92);backdrop-filter:blur(10px);box-shadow:0 6px 30px rgba(0,0,0,.4);padding:10px clamp(20px,5vw,48px)}
+  .nav .logo{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:1.15rem}
+  .nav .logo b{color:var(--orange)}
+  .nav-cta{
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+    font-size:.95rem;background:var(--orange);color:#fff;padding:9px 20px;border-radius:6px;
+    transition:transform .2s var(--ease),background .2s var(--ease);
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:var(--orange-light)}
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 0 60px}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg svg{width:100%;height:100%;object-fit:cover}
+  .hero-overlay{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg,rgba(12,28,52,.94) 0%,rgba(12,28,52,.72) 40%,rgba(12,28,52,.25) 70%,rgba(12,28,52,.55) 100%)}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+
+  .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;
+    font-size:clamp(.85rem,2.2vw,1.15rem);color:var(--cream)}
+  .hero h1{margin:.15em 0 0}
+  .hero .mission{font-family:"Anton",sans-serif;font-size:clamp(3.6rem,15vw,10rem);letter-spacing:1px;
+    color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.5);line-height:.82}
+  .hero .conf-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:.1em .35em;margin-top:.05em}
+  .hero .conference{font-family:"Permanent Marker",cursive;color:var(--orange);
+    font-size:clamp(2.6rem,11vw,7.4rem);line-height:.9;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+  .hero .year{font-family:"Anton",sans-serif;color:var(--cream);font-size:clamp(1.6rem,6vw,3.4rem);
+    background:var(--navy-3);padding:.05em .3em;border-radius:8px;transform:translateY(-.25em);
+    box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .hero .tagline{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:3px;font-size:clamp(1rem,3.4vw,1.9rem);margin-top:.5em;color:var(--cream)}
+  .hero .tagline .dot{color:var(--orange)}
+  .hero-actions{margin-top:2rem;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+    font-size:1.05rem;padding:14px 30px;border-radius:8px;border:2px solid transparent;cursor:pointer;
+    transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease);display:inline-block}
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{transform:translateY(-3px);background:var(--orange-light);box-shadow:0 12px 30px rgba(242,103,34,.4)}
+  .btn-ghost{background:transparent;color:var(--cream);border-color:rgba(243,239,230,.5)}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-3px)}
+
+  .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;
+    font-family:"Barlow Condensed",sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:.8rem;
+    color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.8}
+  .scroll-hint span{width:22px;height:36px;border:2px solid var(--cream-dim);border-radius:12px;position:relative}
+  .scroll-hint span::after{content:"";position:absolute;top:6px;left:50%;width:3px;height:7px;background:var(--cream-dim);
+    border-radius:2px;transform:translateX(-50%);animation:scrolldot 1.6s infinite}
+  @keyframes scrolldot{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}80%,100%{opacity:0;transform:translate(-50%,12px)}}
+
+  /* ============================================================
+     INFO STRIP (date / location / audience)
+     ============================================================ */
+  .info{background:var(--navy-2);padding:clamp(48px,8vw,84px) 0;border-top:1px solid rgba(243,239,230,.06)}
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,40px)}
+  .info-card{background:linear-gradient(160deg,var(--navy-3),var(--navy-2));border:1px solid rgba(243,239,230,.08);
+    border-radius:16px;padding:clamp(24px,4vw,34px);position:relative;overflow:hidden}
+  .info-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--orange)}
+  .info-icon{width:52px;height:52px;border-radius:12px;background:rgba(242,103,34,.14);display:flex;align-items:center;
+    justify-content:center;margin-bottom:16px}
+  .info-icon svg{width:26px;height:26px;stroke:var(--orange)}
+  .info-card .label{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:2px;
+    color:var(--orange);font-size:.85rem;font-weight:600}
+  .info-card .big{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.05;margin-top:4px}
+  .info-card .sub{color:var(--cream-dim);font-size:.98rem;margin-top:6px}
+
+  /* ============================================================
+     MANIFESTO
+     ============================================================ */
+  .manifesto{padding:clamp(60px,10vw,120px) 0;text-align:center;position:relative}
+  .manifesto .kicker{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:4px;
+    color:var(--orange);font-weight:600;font-size:clamp(.9rem,2.2vw,1.05rem)}
+  .manifesto h2{font-family:"Anton",sans-serif;font-size:clamp(2.1rem,6vw,4.2rem);margin:.35em auto .1em;max-width:15ch;line-height:.98}
+  .manifesto h2 .accent{display:inline}
+  .manifesto p.lead{max-width:52ch;margin:1.2em auto 0;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--cream-dim)}
+  .verse-inline{margin-top:1.6em;font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:2px;color:var(--cream);font-size:clamp(1rem,2.6vw,1.35rem)}
+  .verse-inline .ref{color:var(--orange)}
+
+  /* ============================================================
+     PILLARS
+     ============================================================ */
+  .pillars{background:var(--navy-2);padding:clamp(60px,9vw,110px) 0}
+  .section-head{text-align:center;margin-bottom:clamp(36px,6vw,64px)}
+  .section-head .kicker{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:4px;
+    color:var(--orange);font-weight:600;font-size:clamp(.9rem,2.2vw,1.05rem)}
+  .section-head h2{font-family:"Anton",sans-serif;font-size:clamp(2rem,5.5vw,3.6rem);margin-top:.25em}
+  .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.4vw,26px)}
+  .pillar{background:linear-gradient(165deg,var(--navy-3),rgba(19,40,70,.4));border:1px solid rgba(243,239,230,.08);
+    border-radius:18px;padding:clamp(24px,3vw,32px);transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+  .pillar:hover{transform:translateY(-8px);border-color:rgba(242,103,34,.5);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+  .pillar .p-icon{width:58px;height:58px;border-radius:14px;background:rgba(242,103,34,.14);display:flex;
+    align-items:center;justify-content:center;margin-bottom:18px}
+  .pillar .p-icon svg{width:30px;height:30px;stroke:var(--orange)}
+  .pillar h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.5rem;color:var(--orange);letter-spacing:.5px}
+  .pillar p{margin-top:8px;color:var(--cream-dim);font-size:1rem}
+
+  /* ============================================================
+     REGISTRATION
+     ============================================================ */
+  .register{padding:clamp(60px,10vw,120px) 0;position:relative;overflow:hidden}
+  .register::before{content:"";position:absolute;top:-30%;right:-15%;width:60%;height:120%;
+    background:radial-gradient(circle,rgba(242,103,34,.16),transparent 62%);z-index:0}
+  .reg-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
+  .reg-copy .kicker{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:4px;
+    color:var(--orange);font-weight:600;font-size:clamp(.9rem,2.2vw,1.05rem)}
+  .reg-copy h2{font-family:"Anton",sans-serif;font-size:clamp(2.3rem,6vw,4rem);margin:.25em 0 .1em;line-height:.95}
+  .reg-copy .limited{display:inline-block;margin-top:14px;font-family:"Barlow Condensed",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:2px;background:var(--orange);color:#fff;padding:6px 16px;border-radius:6px;font-size:.95rem}
+  .reg-copy p{margin-top:18px;color:var(--cream-dim);font-size:1.08rem;max-width:44ch}
+  .reg-copy ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .reg-copy li{display:flex;align-items:center;gap:12px;font-size:1.02rem}
+  .reg-copy li svg{width:22px;height:22px;stroke:var(--orange);flex-shrink:0}
+
+  .form-card{background:linear-gradient(165deg,var(--navy-3),var(--navy-2));border:1px solid rgba(243,239,230,.1);
+    border-radius:22px;padding:clamp(26px,4vw,40px);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+  .form-card h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.7rem;letter-spacing:.5px}
+  .form-card .form-sub{color:var(--cream-dim);font-size:.98rem;margin-top:4px;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:1.5px;font-size:.82rem;color:var(--cream);margin-bottom:6px}
+  .field label .req{color:var(--orange)}
+  .field input,.field select{width:100%;background:rgba(10,23,41,.7);border:1.5px solid rgba(243,239,230,.14);
+    border-radius:10px;padding:13px 14px;color:var(--cream);font-size:1rem;font-family:"Inter",sans-serif;
+    transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+  .field input::placeholder{color:#7d8699}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,103,34,.18)}
+  .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f26722' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:42px}
+  .field select option{background:var(--navy)}
+  .submit-btn{width:100%;margin-top:8px;background:var(--orange);color:#fff;border:none;border-radius:10px;
+    padding:16px;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+    font-size:1.15rem;cursor:pointer;transition:transform .2s var(--ease),background .2s var(--ease)}
+  .submit-btn:hover:not(:disabled){transform:translateY(-2px);background:var(--orange-light)}
+  .submit-btn:disabled{opacity:.65;cursor:not-allowed}
+  .form-msg{margin-top:14px;padding:13px 16px;border-radius:10px;font-size:.96rem;display:none}
+  .form-msg.show{display:block}
+  .form-msg.ok{background:rgba(46,160,90,.16);border:1px solid rgba(46,160,90,.5);color:#a7e8bf}
+  .form-msg.err{background:rgba(214,69,69,.14);border:1px solid rgba(214,69,69,.5);color:#f2b0b0}
+  .form-note{margin-top:14px;font-size:.82rem;color:#7d8699;text-align:center}
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer{background:var(--navy-2);border-top:1px solid rgba(243,239,230,.08);padding:clamp(48px,7vw,80px) 0 40px;text-align:center}
+  footer .verse{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:1px;line-height:1.1}
+  footer .verse .ref{color:var(--orange);display:block;font-size:.55em;margin-top:.4em;letter-spacing:2px}
+  footer .brand{margin-top:36px;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:1.5px;font-size:1.15rem}
+  footer .brand b{color:var(--orange)}
+  .socials{display:flex;gap:16px;justify-content:center;margin-top:20px}
+  .socials a{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(243,239,230,.25);display:flex;
+    align-items:center;justify-content:center;transition:all .25s var(--ease)}
+  .socials a:hover{background:var(--orange);border-color:var(--orange);transform:translateY(-3px)}
+  .socials a svg{width:22px;height:22px;fill:var(--cream)}
+  .socials a:hover svg{fill:#fff}
+  .handle{margin-top:16px;color:var(--cream-dim);font-family:"Barlow Condensed",sans-serif;letter-spacing:1.5px;font-size:1.05rem}
+  .copyright{margin-top:28px;color:#5c6579;font-size:.85rem}
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:880px){
+    .info-grid{grid-template-columns:1fr}
+    .pillar-grid{grid-template-columns:repeat(2,1fr)}
+    .reg-grid{grid-template-columns:1fr}
+    .reg-copy{text-align:center}
+    .reg-copy p{margin-left:auto;margin-right:auto}
+    .reg-copy ul{align-items:center}
+    .nav-cta{display:none}
+  }
+  @media (max-width:520px){
+    .pillar-grid{grid-template-columns:1fr}
+    .hero .year{transform:translateY(-.15em)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="logo">MISSION<b>·</b>UNLEASHED</div>
+  <a href="#register" class="nav-cta">Register</a>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Layered sunset + mountains + outstretched-arms silhouette -->
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0c1c34"/>
+          <stop offset="0.5" stop-color="#20385c"/>
+          <stop offset="0.8" stop-color="#7a5330"/>
+          <stop offset="1" stop-color="#f0913f"/>
+        </linearGradient>
+        <radialGradient id="sun" cx="0.82" cy="0.62" r="0.42">
+          <stop offset="0" stop-color="#ffe3a8" stop-opacity="0.95"/>
+          <stop offset="0.35" stop-color="#ffb057" stop-opacity="0.55"/>
+          <stop offset="1" stop-color="#ffb057" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1440" height="900" fill="url(#sky)"/>
+      <rect width="1440" height="900" fill="url(#sun)"/>
+      <!-- far ridge -->
+      <path d="M0,560 L180,520 L360,560 L560,500 L760,560 L980,510 L1200,570 L1440,520 L1440,900 L0,900 Z" fill="#2b466d" opacity="0.55"/>
+      <!-- mid ridge -->
+      <path d="M0,650 L220,600 L440,660 L680,590 L900,660 L1140,600 L1440,660 L1440,900 L0,900 Z" fill="#1c3355" opacity="0.75"/>
+      <!-- near ridge -->
+      <path d="M0,760 L240,700 L520,770 L780,690 L1040,770 L1300,700 L1440,750 L1440,900 L0,900 Z" fill="#0c1c34"/>
+      <!-- figure on summit, arms raised in worship -->
+      <g fill="#050d1a" stroke="#050d1a" stroke-linecap="round" stroke-linejoin="round">
+        <!-- backpack -->
+        <path d="M772,600 q-16,4 -15,26 l0,26 q0,10 15,10 l0,-62 Z" stroke-width="0"/>
+        <!-- head -->
+        <circle cx="784" cy="566" r="15"/>
+        <!-- neck+torso -->
+        <path d="M784,582 L784,652" stroke-width="27"/>
+        <!-- arms raised out in a V -->
+        <path d="M784,596 L742,540" stroke-width="12"/>
+        <path d="M784,596 L826,540" stroke-width="12"/>
+        <!-- hands open -->
+        <circle cx="740" cy="537" r="5"/>
+        <circle cx="828" cy="537" r="5"/>
+        <!-- legs -->
+        <path d="M784,650 L770,698" stroke-width="14"/>
+        <path d="M784,650 L798,698" stroke-width="14"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <p class="eyebrow reveal">Ignite Your Faith. Impact The Nations.</p>
+    <h1 class="reveal d1">
+      <span class="mission impact">Mission</span>
+      <span class="conf-row">
+        <span class="conference">Conference</span>
+        <span class="year">2026</span>
+      </span>
+    </h1>
+    <p class="tagline reveal d2">Called<span class="dot">.</span> Equipped<span class="dot">.</span> Sent<span class="dot">.</span></p>
+    <div class="hero-actions reveal d3">
+      <a href="#register" class="btn btn-primary">Register Now</a>
+      <a href="#details" class="btn btn-ghost">Learn More</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+</section>
+
+<!-- ================= INFO STRIP ================= -->
+<section class="info" id="details">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="label">When</div>
+        <div class="big">Friday, November 13</div>
+        <div class="sub">2026 &middot; Doors &amp; worship 7:00 PM</div>
+      </div>
+      <div class="info-card reveal d1">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="label">Where</div>
+        <div class="big">Texas A&amp;M University</div>
+        <div class="sub">Aggie Park &middot; Wood Stage<br/>College Station, TX</div>
+      </div>
+      <div class="info-card reveal d2">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="label">Who</div>
+        <div class="big">Youth &amp; Young Adults</div>
+        <div class="sub">Students &amp; young adults who want <span class="accent">more.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MANIFESTO ================= -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="kicker reveal">For those who want more</p>
+    <h2 class="reveal d1">We don't just talk about missions.<br/><span class="accent">We mobilize. Train. And send.</span></h2>
+    <p class="lead reveal d2">A night to be ignited for missions and empowered to make a global impact. Real training. Real experience. Real impact — then you go.</p>
+    <p class="verse-inline reveal d3">&ldquo;Here I am. Send me.&rdquo; <span class="ref">— Isaiah 6:8</span></p>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Mobilize &middot; Train &middot; Send</p>
+      <h2>One Night Can Change Your World</h2>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar reveal">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Go Global</h3>
+        <p>Two mission trips every year. Reach the nations, not just talk about them.</p>
+      </div>
+      <div class="pillar reveal d1">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        </div>
+        <h3>You Pay Flight</h3>
+        <p>You cover the airfare — we cover the rest. Zero agency fees. Go anywhere. Anytime.</p>
+      </div>
+      <div class="pillar reveal d2">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Get Equipped</h3>
+        <p>Real training. Real experience. Real impact. We prepare you before we send you.</p>
+      </div>
+      <div class="pillar reveal d3">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3>Be Sent</h3>
+        <p>Step out in faith. Change lives. Change eternity. This is where it begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REGISTER ================= -->
+<section class="register" id="register">
+  <div class="wrap">
+    <div class="reg-grid">
+      <div class="reg-copy">
+        <p class="kicker reveal">Register Now</p>
+        <h2 class="reveal d1">One Night<br/>Can Change<br/><span class="accent">Your World.</span></h2>
+        <span class="limited reveal d1">Spots are limited</span>
+        <p class="reveal d2">Reserve your place at Mission Conference 2026. Free to attend — bring a friend and come ready to be sent.</p>
+        <ul class="reveal d3">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Worship &amp; a live missions experience</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Connect with the mission team</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Take your first step to go global</li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal d2">
+        <h3>Reserve Your Spot</h3>
+        <p class="form-sub">Fill out the form below — takes 30 seconds.</p>
+        <form id="regForm" novalidate>
+          <div class="field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" required autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="role">I am a... <span class="req">*</span></label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option value="student">Student</option>
+              <option value="young_adult">Young Adult</option>
+              <option value="youth">Youth (High School)</option>
+              <option value="leader">Youth / Ministry Leader</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Send Me &rarr;</button>
+          <div class="form-msg" id="formMsg"></div>
+          <p class="form-note">By registering you agree to receive event updates. We never share your info.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <p class="verse reveal">&ldquo;Here I am. Send me.&rdquo;<span class="ref">Isaiah 6:8</span></p>
+    <p class="brand reveal d1">IM Mission USA &middot; <b>Mission Unleashed</b></p>
+    <div class="socials reveal d2">
+      <a href="https://instagram.com/mission.unleashed" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-.9.04-1.38.19-1.7.32-.43.16-.73.36-1.05.68-.32.32-.52.62-.68 1.05-.13.32-.28.8-.32 1.7C3.21 8.48 3.2 8.85 3.2 12s.01 3.52.07 4.76c.04.9.19 1.38.32 1.7.16.43.36.73.68 1.05.32.32.62.52 1.05.68.32.13.8.28 1.7.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.38-.19 1.7-.32.43-.16.73-.36 1.05-.68.32-.32.52-.62.68-1.05.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.38-.32-1.7a2.8 2.8 0 0 0-.68-1.05 2.8 2.8 0 0 0-1.05-.68c-.32-.13-.8-.28-1.7-.32C15.52 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 0 12 16.94 4.94 4.94 0 0 0 12 7.06zm0 8.14A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm6.29-8.34a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@mission.unleashed" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v13.02a2.42 2.42 0 0 1-2.42 2.34 2.42 2.42 0 0 1 0-4.84c.24 0 .47.04.68.1v-3.26a5.66 5.66 0 0 0-.68-.04 5.62 5.62 0 1 0 5.62 5.62V9.2a7.5 7.5 0 0 0 4.36 1.4V7.4a4.28 4.28 0 0 1-3.3-1.58z"/></svg>
+      </a>
+      <a href="https://youtube.com/@mission.unleashed" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.74a2.5 2.5 0 0 0-1.76-1.77C19.28 5.09 12 5.09 12 5.09s-7.28 0-8.84.4A2.5 2.5 0 0 0 1.4 7.26C1 8.8 1 12 1 12s0 3.2.4 4.74a2.5 2.5 0 0 0 1.76 1.77c1.56.4 8.84.4 8.84.4s7.28 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15 12l-5.25 3.02z"/></svg>
+      </a>
+    </div>
+    <p class="handle">@mission.unleashed</p>
+    <p class="copyright">&copy; 2026 IM Mission USA · Mission Unleashed. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1) SUPABASE CONFIG  —  EDIT THESE TWO VALUES
+   ------------------------------------------------------------
+   Get them from: Supabase Dashboard → Project Settings → API
+   The anon key is safe to expose in client code (protected by
+   Row Level Security). See SUPABASE_SETUP.md for the full setup.
+   ============================================================ */
+const SUPABASE_URL = "https://YOUR-PROJECT-ref.supabase.co";
+const SUPABASE_ANON_KEY = "YOUR-PUBLIC-ANON-KEY";
+const TABLE_NAME = "registrations";
+
+/* ---------- init client (only if configured) ---------- */
+let supa = null;
+const isConfigured = !SUPABASE_URL.includes("YOUR-PROJECT") && !SUPABASE_ANON_KEY.includes("YOUR-PUBLIC");
+if (isConfigured && window.supabase) {
+  supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+/* ============================================================
+   2) NAV shadow on scroll
+   ============================================================ */
+const nav = document.getElementById("nav");
+const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+/* ============================================================
+   3) Scroll reveal
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+/* ============================================================
+   4) Registration form → Supabase
+   ============================================================ */
+const form = document.getElementById("regForm");
+const btn = document.getElementById("submitBtn");
+const msg = document.getElementById("formMsg");
+
+function showMsg(text, type) {
+  msg.textContent = text;
+  msg.className = "form-msg show " + type;
+}
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  msg.className = "form-msg";
+
+  const data = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim(),
+    role: form.role.value,
+  };
+
+  // basic validation
+  if (!data.name || !data.email || !data.phone || !data.role) {
+    return showMsg("Please fill in every field before submitting.", "err");
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    return showMsg("Please enter a valid email address.", "err");
+  }
+
+  if (!supa) {
+    return showMsg(
+      "⚠️ Registration isn't connected yet. Add your Supabase URL & anon key in index.html (see SUPABASE_SETUP.md).",
+      "err"
+    );
+  }
+
+  btn.disabled = true;
+  const original = btn.innerHTML;
+  btn.innerHTML = "Sending…";
+
+  try {
+    const { error } = await supa.from(TABLE_NAME).insert([data]);
+    if (error) throw error;
+    form.reset();
+    showMsg("🎉 You're in! We saved your spot. Check your email for details. See you November 13th.", "ok");
+  } catch (err) {
+    console.error(err);
+    const dup = (err && (err.code === "23505" || /duplicate/i.test(err.message || "")));
+    showMsg(
+      dup
+        ? "You're already registered with this email — see you there!"
+        : "Something went wrong saving your registration. Please try again in a moment.",
+      dup ? "ok" : "err"
+    );
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = original;
+  }
+});
+</script>
+</body>
+</html>
