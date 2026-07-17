@@ -499,7 +499,9 @@
    ============================================================ */
 const SUPABASE_URL = "https://illbgsjvhsciougzjgwn.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsbGJnc2p2aHNjaW91Z3pqZ3duIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwNzM4NDUsImV4cCI6MjA5MDY0OTg0NX0.TrBlbpyXoMlwwBZUjbeC-Li6XcDAMeGgfNWGRmSyOR4";
-const TABLE_NAME = "registrations";
+// Namespaced table — this Supabase project is shared with other sites,
+// so a "mc2026_" prefix keeps these registrations isolated from them.
+const TABLE_NAME = "mc2026_registrations";
 
 /* ---------- init client (only if configured) ---------- */
 let supa = null;
