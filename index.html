@@ -107,6 +107,11 @@
 
   .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;
     font-size:clamp(.85rem,2.2vw,1.15rem);color:var(--cream)}
+  /* "Since 1886" rides the eyebrow as a rule-separated tag, so the heritage
+     reads as a credential rather than competing with the SVM wordmark */
+  .eyebrow .since{position:relative;margin-left:.9em;padding-left:1.05em;color:var(--orange);white-space:nowrap}
+  .eyebrow .since::before{content:"";position:absolute;left:0;top:50%;width:.6em;height:1px;
+    background:rgba(243,239,230,.45)}
   .hero h1{margin:.28em 0 0}
   /* line-height must stay >= 1 here: Anton's caps overflow a shorter line box
      and collide with the eyebrow above and the script line below */
@@ -361,7 +366,7 @@
   <div class="hero-overlay" aria-hidden="true"></div>
 
   <div class="wrap">
-    <p class="eyebrow reveal">Student Volunteer Movement</p>
+    <p class="eyebrow reveal">Student Volunteer Movement <span class="since">Since 1886</span></p>
     <h1 class="reveal d1">
       <span class="mission impact">SVM</span>
       <span class="conf-row">
@@ -416,7 +421,7 @@
   <div class="wrap">
     <p class="kicker reveal">Ignite Your Faith &middot; Impact The Nations</p>
     <h2 class="reveal d1">We don't just talk about missions.<br/><span class="accent">We mobilize. We train. We send.</span></h2>
-    <p class="lead reveal d2">SVM is the Student Volunteer Movement — students who stop waiting and go. One night to be ignited for missions and equipped to make a global impact. Real training. Real experience. Real impact — then you go.</p>
+    <p class="lead reveal d2">SVM is the Student Volunteer Movement — since 1886, students who stop waiting and go. One night to be ignited for missions and equipped to make a global impact. Real training. Real experience. Real impact — then you go.</p>
     <p class="verse-inline reveal d3">&ldquo;Here I am. Send me.&rdquo; <span class="ref">— Isaiah 6:8</span></p>
   </div>
 </section>
@@ -607,19 +612,10 @@
   <div class="wrap">
     <p class="verse reveal">&ldquo;Here I am. Send me.&rdquo;<span class="ref">Isaiah 6:8</span></p>
     <p class="brand reveal d1">Hosted by <b>IM Mission Foundation Group Corp</b></p>
-    <p class="host-sub reveal d1">SVM &middot; Student Volunteer Movement</p>
-    <div class="socials reveal d2">
-      <a href="https://instagram.com/mission.unleashed" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-.9.04-1.38.19-1.7.32-.43.16-.73.36-1.05.68-.32.32-.52.62-.68 1.05-.13.32-.28.8-.32 1.7C3.21 8.48 3.2 8.85 3.2 12s.01 3.52.07 4.76c.04.9.19 1.38.32 1.7.16.43.36.73.68 1.05.32.32.62.52 1.05.68.32.13.8.28 1.7.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.38-.19 1.7-.32.43-.16.73-.36 1.05-.68.32-.32.52-.62.68-1.05.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.38-.32-1.7a2.8 2.8 0 0 0-.68-1.05 2.8 2.8 0 0 0-1.05-.68c-.32-.13-.8-.28-1.7-.32C15.52 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 0 12 16.94 4.94 4.94 0 0 0 12 7.06zm0 8.14A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm6.29-8.34a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
-      </a>
-      <a href="https://tiktok.com/@mission.unleashed" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v13.02a2.42 2.42 0 0 1-2.42 2.34 2.42 2.42 0 0 1 0-4.84c.24 0 .47.04.68.1v-3.26a5.66 5.66 0 0 0-.68-.04 5.62 5.62 0 1 0 5.62 5.62V9.2a7.5 7.5 0 0 0 4.36 1.4V7.4a4.28 4.28 0 0 1-3.3-1.58z"/></svg>
-      </a>
-      <a href="https://youtube.com/@mission.unleashed" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.74a2.5 2.5 0 0 0-1.76-1.77C19.28 5.09 12 5.09 12 5.09s-7.28 0-8.84.4A2.5 2.5 0 0 0 1.4 7.26C1 8.8 1 12 1 12s0 3.2.4 4.74a2.5 2.5 0 0 0 1.76 1.77c1.56.4 8.84.4 8.84.4s7.28 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15 12l-5.25 3.02z"/></svg>
-      </a>
-    </div>
-    <p class="handle">@mission.unleashed</p>
+    <p class="host-sub reveal d1">SVM &middot; Student Volunteer Movement &middot; Since 1886</p>
+    <!-- Social links removed: SVM has no accounts yet. The icon markup for
+         Instagram / TikTok / YouTube lives in git history (commit 13ada5b);
+         restore it here and swap the handles once the accounts exist. -->
     <p class="copyright">&copy; 2026 IM Mission Foundation Group Corp. All rights reserved.</p>
   </div>
 </footer>
