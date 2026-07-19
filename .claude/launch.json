@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mc2026",
+      "runtimeExecutable": "/private/tmp/mc2026-serve.sh",
+      "runtimeArgs": [],
+      "port": 8000
+    }
+  ]
+}

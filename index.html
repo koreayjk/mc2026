@@ -10,6 +10,11 @@
 <meta property="og:title" content="Mission Conference 2026 · Called. Equipped. Sent." />
 <meta property="og:description" content="Ignite your faith. Impact the nations. One night can change your world. Nov 13, 2026 · Texas A&M University." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="assets/images/hero.jpg" />
+
+<!-- ===== Preload hero art ===== -->
+<link rel="preload" as="image" href="assets/images/hero.jpg" media="(min-width:721px)" />
+<link rel="preload" as="image" href="assets/images/hero-sm.jpg" media="(max-width:720px)" />
 
 <!-- ===== Fonts ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -92,9 +97,12 @@
      ============================================================ */
   .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 0 60px}
   .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg svg{width:100%;height:100%;object-fit:cover}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+  /* navy duotone wash so the bright sky still reads behind cream type */
   .hero-overlay{position:absolute;inset:0;z-index:1;
-    background:linear-gradient(90deg,rgba(12,28,52,.94) 0%,rgba(12,28,52,.72) 40%,rgba(12,28,52,.25) 70%,rgba(12,28,52,.55) 100%)}
+    background:
+      linear-gradient(90deg,rgba(12,28,52,.93) 0%,rgba(12,28,52,.80) 42%,rgba(12,28,52,.46) 72%,rgba(12,28,52,.62) 100%),
+      linear-gradient(180deg,rgba(10,23,41,.72) 0%,rgba(10,23,41,.30) 38%,rgba(10,23,41,.55) 78%,rgba(12,28,52,.95) 100%)}
   .hero .wrap{position:relative;z-index:2;width:100%}
 
   .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;
@@ -181,9 +189,13 @@
      REGISTRATION
      ============================================================ */
   .register{padding:clamp(60px,10vw,120px) 0;position:relative;overflow:hidden}
+  .register .reg-bg{position:absolute;inset:0;z-index:0}
+  .register .reg-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+  .register .reg-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,var(--navy) 0%,rgba(12,28,52,.90) 22%,rgba(12,28,52,.86) 70%,var(--navy) 100%)}
   .register::before{content:"";position:absolute;top:-30%;right:-15%;width:60%;height:120%;
-    background:radial-gradient(circle,rgba(242,103,34,.16),transparent 62%);z-index:0}
-  .reg-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
+    background:radial-gradient(circle,rgba(242,103,34,.18),transparent 62%);z-index:1;pointer-events:none}
+  .reg-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
   .reg-copy .kicker{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:4px;
     color:var(--orange);font-weight:600;font-size:clamp(.9rem,2.2vw,1.05rem)}
   .reg-copy h2{font-family:"Anton",sans-serif;font-size:clamp(2.3rem,6vw,4rem);margin:.25em 0 .1em;line-height:.95}
@@ -241,11 +253,78 @@
   .copyright{margin-top:28px;color:#5c6579;font-size:.85rem}
 
   /* ============================================================
+     FULL-BLEED PHOTO BAND (divider)
+     ============================================================ */
+  .band{position:relative;min-height:clamp(300px,42vw,470px);display:flex;align-items:center;
+    justify-content:center;text-align:center;overflow:hidden;background:var(--navy-2)}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .band::after{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(10,23,41,.88) 0%,rgba(10,23,41,.55) 45%,rgba(10,23,41,.9) 100%)}
+  .band .wrap{position:relative;z-index:2}
+  .band .quote{font-family:"Anton",sans-serif;text-transform:uppercase;line-height:.98;
+    font-size:clamp(1.8rem,5vw,3.4rem);max-width:18ch;margin:0 auto;text-shadow:0 4px 24px rgba(0,0,0,.55)}
+  .band .sub{margin-top:16px;color:var(--cream-dim);font-family:"Barlow Condensed",sans-serif;
+    text-transform:uppercase;letter-spacing:3px;font-size:clamp(.85rem,2.2vw,1.05rem)}
+
+  /* ============================================================
+     TENT VILLAGE / NATIONS
+     ============================================================ */
+  .tents{padding:clamp(60px,9vw,110px) 0 0;position:relative}
+  .tents .lead{max-width:58ch;margin:1.1em auto 0;color:var(--cream-dim);
+    font-size:clamp(1.02rem,2.4vw,1.2rem);text-align:center}
+  .tent-hero{position:relative;margin-top:clamp(34px,5vw,56px);border-radius:22px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.45);border:1px solid rgba(243,239,230,.1)}
+  .tent-hero img{width:100%;height:clamp(240px,34vw,420px);object-fit:cover}
+  .tent-hero .cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(34px,5vw,44px) clamp(20px,4vw,34px) clamp(20px,4vw,30px);
+    background:linear-gradient(180deg,transparent,rgba(10,23,41,.55) 35%,rgba(10,23,41,.97));
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .tent-hero .cap h3{font-family:"Anton",sans-serif;font-size:clamp(1.4rem,3.4vw,2.4rem);letter-spacing:.5px}
+  .tent-hero .cap p{color:var(--cream-dim);font-size:.98rem;max-width:40ch}
+  .flag-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:clamp(26px,4vw,40px)}
+  .flag-chip{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:1.5px;font-size:.9rem;padding:7px 15px;border-radius:999px;
+    border:1.5px solid rgba(243,239,230,.22);color:var(--cream);background:rgba(19,40,70,.5);
+    transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease)}
+  .flag-chip:hover{border-color:var(--orange);transform:translateY(-2px);background:rgba(242,103,34,.14)}
+  .flag-chip.more{background:var(--orange);border-color:var(--orange);color:#fff}
+
+  .tent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px);
+    margin-top:clamp(30px,4.5vw,50px)}
+  .tent-card{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(243,239,230,.09);
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .tent-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px rgba(0,0,0,.4)}
+  .tent-card img{width:100%;height:clamp(210px,24vw,280px);object-fit:cover;
+    transition:transform .6s var(--ease)}
+  .tent-card:hover img{transform:scale(1.05)}
+  .tent-card .tc-body{position:absolute;inset:auto 0 0 0;padding:34px 20px 20px;
+    background:linear-gradient(180deg,transparent,rgba(10,23,41,.72) 30%,rgba(10,23,41,.97) 62%)}
+  .tent-card .tc-body .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:2px;font-size:.8rem;color:var(--orange)}
+  .tent-card .tc-body h4{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:1.35rem;line-height:1.05;margin-top:2px}
+  .tent-card .tc-body p{color:var(--cream-dim);font-size:.93rem;margin-top:5px}
+
+  /* ============================================================
+     MOMENTS GALLERY
+     ============================================================ */
+  .moments{padding:clamp(56px,8vw,100px) 0}
+  .moment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,16px)}
+  .moment{border-radius:14px;overflow:hidden;position:relative;border:1px solid rgba(243,239,230,.08)}
+  .moment img{width:100%;height:clamp(150px,17vw,220px);object-fit:cover;
+    filter:saturate(.9);transition:transform .6s var(--ease),filter .4s var(--ease)}
+  .moment:hover img{transform:scale(1.06);filter:saturate(1.1)}
+  .moment::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(12,28,52,.1),rgba(12,28,52,.45))}
+
+  /* ============================================================
      RESPONSIVE
      ============================================================ */
   @media (max-width:880px){
     .info-grid{grid-template-columns:1fr}
     .pillar-grid{grid-template-columns:repeat(2,1fr)}
+    .tent-grid{grid-template-columns:1fr}
+    .moment-grid{grid-template-columns:repeat(2,1fr)}
+    .tent-hero .cap{flex-direction:column;align-items:flex-start}
     .reg-grid{grid-template-columns:1fr}
     .reg-copy{text-align:center}
     .reg-copy p{margin-left:auto;margin-right:auto}
@@ -269,48 +348,10 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <!-- Layered sunset + mountains + outstretched-arms silhouette -->
-    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#0c1c34"/>
-          <stop offset="0.5" stop-color="#20385c"/>
-          <stop offset="0.8" stop-color="#7a5330"/>
-          <stop offset="1" stop-color="#f0913f"/>
-        </linearGradient>
-        <radialGradient id="sun" cx="0.82" cy="0.62" r="0.42">
-          <stop offset="0" stop-color="#ffe3a8" stop-opacity="0.95"/>
-          <stop offset="0.35" stop-color="#ffb057" stop-opacity="0.55"/>
-          <stop offset="1" stop-color="#ffb057" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <rect width="1440" height="900" fill="url(#sky)"/>
-      <rect width="1440" height="900" fill="url(#sun)"/>
-      <!-- far ridge -->
-      <path d="M0,560 L180,520 L360,560 L560,500 L760,560 L980,510 L1200,570 L1440,520 L1440,900 L0,900 Z" fill="#2b466d" opacity="0.55"/>
-      <!-- mid ridge -->
-      <path d="M0,650 L220,600 L440,660 L680,590 L900,660 L1140,600 L1440,660 L1440,900 L0,900 Z" fill="#1c3355" opacity="0.75"/>
-      <!-- near ridge -->
-      <path d="M0,760 L240,700 L520,770 L780,690 L1040,770 L1300,700 L1440,750 L1440,900 L0,900 Z" fill="#0c1c34"/>
-      <!-- figure on summit, arms raised in worship -->
-      <g fill="#050d1a" stroke="#050d1a" stroke-linecap="round" stroke-linejoin="round">
-        <!-- backpack -->
-        <path d="M772,600 q-16,4 -15,26 l0,26 q0,10 15,10 l0,-62 Z" stroke-width="0"/>
-        <!-- head -->
-        <circle cx="784" cy="566" r="15"/>
-        <!-- neck+torso -->
-        <path d="M784,582 L784,652" stroke-width="27"/>
-        <!-- arms raised out in a V -->
-        <path d="M784,596 L742,540" stroke-width="12"/>
-        <path d="M784,596 L826,540" stroke-width="12"/>
-        <!-- hands open -->
-        <circle cx="740" cy="537" r="5"/>
-        <circle cx="828" cy="537" r="5"/>
-        <!-- legs -->
-        <path d="M784,650 L770,698" stroke-width="14"/>
-        <path d="M784,650 L798,698" stroke-width="14"/>
-      </g>
-    </svg>
+    <picture>
+      <source media="(max-width:720px)" srcset="assets/images/hero-sm.jpg" />
+      <img src="assets/images/hero.jpg" alt="" fetchpriority="high" decoding="async" />
+    </picture>
   </div>
   <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -326,7 +367,7 @@
     <p class="tagline reveal d2">Called<span class="dot">.</span> Equipped<span class="dot">.</span> Sent<span class="dot">.</span></p>
     <div class="hero-actions reveal d3">
       <a href="#register" class="btn btn-primary">Register Now</a>
-      <a href="#details" class="btn btn-ghost">Learn More</a>
+      <a href="#nations" class="btn btn-ghost">See The Tent Village</a>
     </div>
   </div>
 
@@ -375,6 +416,15 @@
   </div>
 </section>
 
+<!-- ================= PHOTO BAND ================= -->
+<section class="band" aria-label="Worship at Mission Conference">
+  <img src="assets/images/band-pano.jpg" alt="A crowd worshipping with hands raised" loading="lazy" decoding="async" />
+  <div class="wrap">
+    <p class="quote reveal">The nations are waiting.<br/><span class="accent">Will you go?</span></p>
+    <p class="sub reveal d1">November 13 &middot; Aggie Park &middot; 7:00 PM</p>
+  </div>
+</section>
+
 <!-- ================= PILLARS ================= -->
 <section class="pillars">
   <div class="wrap">
@@ -415,8 +465,87 @@
   </div>
 </section>
 
+<!-- ================= TENT VILLAGE / NATIONS ================= -->
+<section class="tents" id="nations">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Walk the world in one night</p>
+      <h2>The Tent Village</h2>
+    </div>
+    <p class="lead reveal d1">
+      Every mission field gets its own tent. Step inside and meet the people who've been there —
+      the food, the stories, the needs, the open doors. Walk from nation to nation, then pick
+      the one God won't let you put down.
+    </p>
+
+    <div class="tent-hero reveal d2">
+      <img src="assets/images/tents-wide.jpg" alt="Rows of white tents set up on a lawn for an outdoor gathering" loading="lazy" decoding="async" />
+      <div class="cap">
+        <div>
+          <h3>One Tent. One Nation. One Calling.</h3>
+          <p>Open all evening — come early and take your time.</p>
+        </div>
+        <a href="#register" class="btn btn-primary">Save My Spot</a>
+      </div>
+    </div>
+
+    <div class="flag-row reveal d3">
+      <span class="flag-chip">🇰🇭 Cambodia</span>
+      <span class="flag-chip">🇵🇭 Philippines</span>
+      <span class="flag-chip">🇹🇭 Thailand</span>
+      <span class="flag-chip">🇰🇪 Kenya</span>
+      <span class="flag-chip">🇲🇽 Mexico</span>
+      <span class="flag-chip">🇮🇳 India</span>
+      <span class="flag-chip">🇻🇳 Vietnam</span>
+      <span class="flag-chip more">+ more announced soon</span>
+    </div>
+
+    <div class="tent-grid">
+      <div class="tent-card reveal">
+        <img src="assets/images/tents-row.jpg" alt="Guests gathered under open-sided tents" loading="lazy" decoding="async" />
+        <div class="tc-body">
+          <div class="n">01 · Explore</div>
+          <h4>Nation Booths</h4>
+          <p>Maps, photos, prayer needs and real stories from every field we serve.</p>
+        </div>
+      </div>
+      <div class="tent-card reveal d1">
+        <img src="assets/images/tents-crowd.jpg" alt="A large crowd gathered beside a tent at an outdoor event" loading="lazy" decoding="async" />
+        <div class="tc-body">
+          <div class="n">02 · Connect</div>
+          <h4>Meet The Team</h4>
+          <p>Talk face to face with the people already on the ground — ask them anything.</p>
+        </div>
+      </div>
+      <div class="tent-card reveal d2">
+        <img src="assets/images/tile-friends.jpg" alt="Young people with hands raised at an outdoor gathering" loading="lazy" decoding="async" />
+        <div class="tc-body">
+          <div class="n">03 · Commit</div>
+          <h4>Sign Your Nation</h4>
+          <p>Found your field? Put your name on the board and start the journey that night.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- moments gallery ---- -->
+  <div class="moments">
+    <div class="wrap">
+      <div class="moment-grid">
+        <div class="moment reveal"><img src="assets/images/tile-worship.jpg" alt="Hands raised in worship" loading="lazy" decoding="async" /></div>
+        <div class="moment reveal d1"><img src="assets/images/tile-live.jpg" alt="Crowd at a live worship night" loading="lazy" decoding="async" /></div>
+        <div class="moment reveal d2"><img src="assets/images/tile-arms.jpg" alt="Arms raised toward the stage" loading="lazy" decoding="async" /></div>
+        <div class="moment reveal d3"><img src="assets/images/tile-stage.jpg" alt="Stage lights over a packed crowd" loading="lazy" decoding="async" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= REGISTER ================= -->
 <section class="register" id="register">
+  <div class="reg-bg" aria-hidden="true">
+    <img src="assets/images/register-bg.jpg" alt="" loading="lazy" decoding="async" />
+  </div>
   <div class="wrap">
     <div class="reg-grid">
       <div class="reg-copy">
