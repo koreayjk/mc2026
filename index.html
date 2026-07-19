@@ -107,12 +107,14 @@
 
   .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;
     font-size:clamp(.85rem,2.2vw,1.15rem);color:var(--cream)}
-  .hero h1{margin:.15em 0 0}
-  .hero .mission{font-family:"Anton",sans-serif;font-size:clamp(3.6rem,15vw,10rem);letter-spacing:1px;
-    color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.5);line-height:.82}
-  .hero .conf-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:.1em .35em;margin-top:.05em}
+  .hero h1{margin:.28em 0 0}
+  /* line-height must stay >= 1 here: Anton's caps overflow a shorter line box
+     and collide with the eyebrow above and the script line below */
+  .hero .mission{display:block;font-family:"Anton",sans-serif;font-size:clamp(3.6rem,15vw,10rem);letter-spacing:1px;
+    color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.5);line-height:1}
+  .hero .conf-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:.1em .35em;margin-top:.08em}
   .hero .conference{font-family:"Permanent Marker",cursive;color:var(--orange);
-    font-size:clamp(2.6rem,11vw,7.4rem);line-height:.9;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+    font-size:clamp(2.6rem,11vw,7.4rem);line-height:1.05;text-shadow:0 3px 18px rgba(0,0,0,.45)}
   .hero .year{font-family:"Anton",sans-serif;color:var(--cream);font-size:clamp(1.6rem,6vw,3.4rem);
     background:var(--navy-3);padding:.05em .3em;border-radius:8px;transform:translateY(-.25em);
     box-shadow:0 6px 20px rgba(0,0,0,.4)}
