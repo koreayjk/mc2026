@@ -15,6 +15,18 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#05101f}
+
+  /* Print/PDF: one page sized exactly to the poster, no margins, keep colors */
+  @page{size:11.25in 16.875in;margin:0}
+  @media print{
+    html,body{background:#fff}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    /* Chrome's PDF engine rasterizes large blurred shadows as opaque grey
+       boxes, so drop every shadow/blur for print. The navy wash already
+       carries the text contrast. */
+    *{text-shadow:none!important;box-shadow:none!important;
+      backdrop-filter:none!important;filter:none!important}
+  }
   body{display:flex;justify-content:center;align-items:flex-start;
     font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 
@@ -77,6 +89,9 @@
     padding-bottom:14px;border-bottom:1px solid rgba(243,239,230,.12)}
   .country .flag{font-size:44px;line-height:1;width:64px;text-align:center;
     filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+  .country.more{grid-column:1/-1;font-size:26px;letter-spacing:3px;color:var(--orange);
+    border-bottom:none;padding-bottom:0;margin-top:6px}
+  .country.more .flag{font-size:30px;width:48px}
   .program{margin-top:26px;text-align:center;
     font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;
     letter-spacing:6px;font-size:24px;color:var(--cream-dim)}
@@ -133,10 +148,11 @@
       <div class="grid">
         <div class="country"><span class="flag">🇰🇷</span> Korea</div>
         <div class="country"><span class="flag">🇵🇭</span> Philippines</div>
-        <div class="country"><span class="flag">🇲🇾</span> Malaysia</div>
         <div class="country"><span class="flag">🇹🇭</span> Thailand</div>
+        <div class="country"><span class="flag">🇲🇾</span> Malaysia</div>
         <div class="country"><span class="flag">🇲🇽</span> Mexico</div>
-        <div class="country"><span class="flag">🌍</span> &amp; More</div>
+        <div class="country"><span class="flag">🇮🇳</span> India</div>
+        <div class="country more"><span class="flag">🌍</span> &amp; more nations announced soon</div>
       </div>
       <p class="program">Worship <span class="sep">&middot;</span> Word <span class="sep">&middot;</span> Vision <span class="sep">&middot;</span> Sending</p>
     </div>
