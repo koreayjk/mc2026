@@ -5,7 +5,7 @@
 A single-file, responsive landing page for the **SVM Mission Conference 2026**, with a
 live registration form backed by Supabase.
 
-- 📅 **Friday, November 13, 2026 · 7:00 PM**
+- 📅 **Friday, November 20, 2026 · 7:00 PM**
 - 📍 **Texas A&M University, Aggie Park (Wood Stage), College Station, TX**
 - 🎯 For youth & young adults
 - 🏛 Hosted by **IM Mission Foundation Group Corp**

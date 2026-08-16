@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SVM Mission Conference 2026 · Called. Equipped. Sent.</title>
-<meta name="description" content="SVM Mission Conference 2026 — Ignite your faith. Impact the nations. Friday, November 13, 2026 · 7:00 PM · Texas A&M University, Aggie Park, College Station, TX. For youth & young adults. Register now — spots are limited." />
+<meta name="description" content="SVM Mission Conference 2026 — Ignite your faith. Impact the nations. Friday, November 20, 2026 · 7:00 PM · Texas A&M University, Aggie Park, College Station, TX. For youth & young adults. Register now — spots are limited." />
 
 <!-- ===== Open Graph / social ===== -->
 <meta property="og:title" content="SVM Mission Conference 2026 · Called. Equipped. Sent." />
-<meta property="og:description" content="SVM Mission Conference 2026 — ignite your faith, impact the nations. Nov 13, 2026 · Texas A&M University." />
+<meta property="og:description" content="SVM Mission Conference 2026 — ignite your faith, impact the nations. Nov 20, 2026 · Texas A&M University." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/images/hero.jpg" />
 
@@ -393,7 +393,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div class="label">When</div>
-        <div class="big">Friday, November 13</div>
+        <div class="big">Friday, November 20</div>
         <div class="sub">2026 &middot; Doors &amp; worship 7:00 PM</div>
       </div>
       <div class="info-card reveal d1">
@@ -431,7 +431,7 @@
   <img src="assets/images/band-pano.jpg" alt="A crowd worshipping with hands raised" loading="lazy" decoding="async" />
   <div class="wrap">
     <p class="quote reveal">The nations are waiting.<br/><span class="accent">Will you go?</span></p>
-    <p class="sub reveal d1">November 13 &middot; Aggie Park &middot; 7:00 PM</p>
+    <p class="sub reveal d1">November 20 &middot; Aggie Park &middot; 7:00 PM</p>
   </div>
 </section>
 
@@ -703,7 +703,7 @@ form.addEventListener("submit", async (ev) => {
     const { error } = await supa.from(TABLE_NAME).insert([data]);
     if (error) throw error;
     form.reset();
-    showMsg("🎉 You're in! We saved your spot. Check your email for details. See you November 13th.", "ok");
+    showMsg("🎉 You're in! We saved your spot. Check your email for details. See you November 20th.", "ok");
   } catch (err) {
     console.error(err);
     const dup = (err && (err.code === "23505" || /duplicate/i.test(err.message || "")));
