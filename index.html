@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="assets/logo/SVM_Logo.svg" />
 <title>SVM Mission Conference 2026 · Called. Equipped. Sent.</title>
 <meta name="description" content="SVM Mission Conference 2026 — Ignite your faith. Impact the nations. Friday, November 20, 2026 · 6:00 PM · Texas A&M University, Bryan-College Station, TX. For youth & young adults. Register now — spots are limited." />
 
@@ -83,8 +84,9 @@
     transition:background .3s var(--ease),padding .3s var(--ease),box-shadow .3s var(--ease);
   }
   header.nav.scrolled{background:rgba(10,23,41,.92);backdrop-filter:blur(10px);box-shadow:0 6px 30px rgba(0,0,0,.4);padding:10px clamp(20px,5vw,48px)}
-  .nav .logo{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:1.15rem}
-  .nav .logo b{color:var(--orange)}
+  .nav .logo{display:inline-flex;align-items:center;line-height:0}
+  .nav .logo img{height:40px;width:auto;display:block;transition:height .3s var(--ease)}
+  header.nav.scrolled .logo img{height:34px}
   .nav-cta{
     font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;
     font-size:.95rem;background:var(--orange);color:#fff;padding:9px 20px;border-radius:6px;
@@ -245,6 +247,7 @@
      FOOTER
      ============================================================ */
   footer{background:var(--navy-2);border-top:1px solid rgba(243,239,230,.08);padding:clamp(48px,7vw,80px) 0 40px;text-align:center}
+  footer .foot-logo{height:56px;width:auto;display:block;margin:0 auto clamp(28px,5vw,40px)}
   footer .verse{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
     font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:1px;line-height:1.1}
   footer .verse .ref{color:var(--orange);display:block;font-size:.55em;margin-top:.4em;letter-spacing:2px}
@@ -351,7 +354,9 @@
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
-  <div class="logo">SVM<b> 2026</b></div>
+  <a href="#" class="logo" aria-label="SVM — Student Volunteer Movement">
+    <img src="assets/logo/SVM_Logo_white.svg" alt="SVM" width="1110" height="620" />
+  </a>
   <a href="#register" class="nav-cta">Register</a>
 </header>
 
@@ -609,6 +614,7 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
+    <img class="foot-logo reveal" src="assets/logo/SVM_Logo_white.svg" alt="SVM — Student Volunteer Movement" width="1110" height="620" />
     <p class="verse reveal">&ldquo;Here I am. Send me.&rdquo;<span class="ref">Isaiah 6:8</span></p>
     <p class="brand reveal d1">Hosted by <b>IM Mission Foundation Group Corp</b></p>
     <p class="host-sub reveal d1">SVM &middot; Student Volunteer Movement &middot; Since 1886</p>
