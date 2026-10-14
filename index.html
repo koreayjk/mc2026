@@ -410,6 +410,53 @@
   .faq-a p{color:var(--cream-dim);font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.65}
   .faq-a strong{color:var(--cream)}
 
+  /* Movement mandate verse */
+  .movement .mandate{margin:1.5em auto 0;max-width:48ch;font-family:"Barlow Condensed",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:1.5px;color:var(--cream);font-size:clamp(.95rem,2.1vw,1.15rem);line-height:1.55}
+  .movement .mandate .ref{display:block;color:var(--orange);letter-spacing:3px;margin-top:.45em;font-size:.82em}
+
+  /* Mobilize / Train / Send */
+  .mts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px);
+    margin:clamp(34px,5vw,56px) auto 0;text-align:left}
+  .mts{background:linear-gradient(165deg,var(--navy-3),rgba(19,40,70,.4));border:1px solid rgba(243,239,230,.08);
+    border-radius:18px;padding:clamp(24px,3vw,32px);border-top:3px solid var(--orange)}
+  .mts-k{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2rem);color:var(--cream);line-height:1}
+  .mts-s{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+    color:var(--orange);font-size:.85rem;margin-top:6px}
+  .mts p{margin-top:12px;color:var(--cream-dim);font-size:1rem;line-height:1.6}
+
+  /* INTO THE WORLD program */
+  .into{background:var(--navy-2);padding:clamp(60px,9vw,110px) 0}
+  .into-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);align-items:start}
+  .into .col-title{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:1px;font-size:clamp(1.3rem,2.8vw,1.7rem);margin-bottom:18px}
+  .into .field-list{list-style:none;display:grid;gap:14px;margin-top:4px}
+  .into .field-list li{display:flex;gap:12px;align-items:flex-start;color:var(--cream);font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.5}
+  .into .field-list li svg{width:22px;height:22px;stroke:var(--orange);flex-shrink:0;margin-top:2px}
+  .provide{background:linear-gradient(165deg,var(--navy-3),var(--navy-2));border:1px solid rgba(243,239,230,.1);
+    border-radius:18px;padding:clamp(24px,3.5vw,34px)}
+  .provide h4{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+    font-size:.9rem;color:var(--orange);margin-bottom:12px}
+  .provide h4.alt{color:var(--cream-dim);margin-top:4px}
+  .provide ul{list-style:none;display:grid;gap:9px;margin-bottom:22px}
+  .provide ul:last-child{margin-bottom:0}
+  .provide li{display:flex;gap:10px;color:var(--cream-dim);font-size:.98rem;line-height:1.45}
+  .provide li b{color:var(--cream);font-weight:600}
+  .provide .dot{color:var(--orange);flex-shrink:0}
+  .train-note{margin:clamp(30px,4vw,44px) auto 0;max-width:72ch;text-align:center;background:rgba(242,103,34,.1);
+    border:1px solid rgba(242,103,34,.3);border-radius:14px;padding:clamp(20px,3vw,26px);
+    color:var(--cream);font-size:clamp(1rem,2.2vw,1.14rem);line-height:1.6}
+  .train-note b{color:var(--orange)}
+
+  /* Three Ways to Join */
+  .join{padding:clamp(60px,9vw,110px) 0;text-align:center}
+  .join-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(34px,5vw,54px)}
+  .join-card{border:1px solid rgba(243,239,230,.1);border-radius:18px;padding:clamp(28px,4vw,40px) clamp(22px,3vw,30px);
+    background:linear-gradient(165deg,var(--navy-3),rgba(19,40,70,.4));transition:transform .35s var(--ease),border-color .35s var(--ease)}
+  .join-card:hover{transform:translateY(-6px);border-color:rgba(242,103,34,.5)}
+  .join-card .jk{font-family:"Anton",sans-serif;text-transform:uppercase;color:var(--orange);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1}
+  .join-card p{margin-top:12px;color:var(--cream-dim);font-size:1.02rem;line-height:1.6}
+
   /* ============================================================
      RESPONSIVE
      ============================================================ */
@@ -427,6 +474,9 @@
     .nav-cta{display:none}
     .stats{grid-template-columns:repeat(2,1fr);gap:28px}
     .org-grid{grid-template-columns:repeat(2,1fr)}
+    .mts-grid{grid-template-columns:1fr}
+    .into-top{grid-template-columns:1fr}
+    .join-grid{grid-template-columns:1fr}
   }
   @media (max-width:520px){
     .pillar-grid{grid-template-columns:1fr}
@@ -522,10 +572,16 @@
         &ldquo;The evangelization of the world<br/><span class="accent">in this generation.</span>&rdquo;
       </blockquote>
       <p class="lead reveal d2">
-        In 1886, the Student Volunteer Movement sent more than 20,000 students from their campuses
-        to the nations under that single cry. We are re-igniting it for today — an independent,
-        campus-based sending movement, supported by local churches and IM Mission, that raises,
-        trains, and sends the next generation. <strong>SVM Mission Conference 2026 is its public launch.</strong>
+        A hundred and fifty years ago, a handful of college students gathered to pray, and a fire
+        started. It became the Student Volunteer Movement — and over the next forty years, more than
+        20,000 young people left their campuses and went to the nations. One move of God among
+        students changed the course of the world. Then the fire faded.
+        <strong>Today, we are gathering a new generation to light it again</strong> — and SVM Mission
+        Conference 2026 is where it begins.
+      </p>
+      <p class="mandate reveal d2">
+        &ldquo;And this gospel of the kingdom will be preached in the whole world as a testimony to all nations.&rdquo;
+        <span class="ref">Matthew 24:14</span>
       </p>
     </div>
     <div class="stats reveal d3">
@@ -540,9 +596,25 @@
 <!-- ================= MANIFESTO ================= -->
 <section class="manifesto">
   <div class="wrap">
-    <p class="kicker reveal">Ignite Your Faith &middot; Impact The Nations</p>
+    <p class="kicker reveal">What We Do</p>
     <h2 class="reveal d1">We don't just talk about missions.<br/><span class="accent">We mobilize. We train. We send.</span></h2>
-    <p class="lead reveal d2">SVM is the Student Volunteer Movement — since 1886, students who stop waiting and go. One night to be ignited for missions and equipped to make a global impact. Real training. Real experience. Real impact — then you go.</p>
+    <div class="mts-grid">
+      <div class="mts reveal">
+        <div class="mts-k">Mobilize</div>
+        <div class="mts-s">Awaken &amp; Gather</div>
+        <p>We awaken students to God's heart for the nations through gatherings, campus outreach, and personal invitation — and we welcome them in.</p>
+      </div>
+      <div class="mts reveal d1">
+        <div class="mts-k">Train</div>
+        <div class="mts-s">Disciple &amp; Equip</div>
+        <p>Every student is discipled and prepared through weekly gatherings — discipleship, prayer, and hands-on evangelism — before they are ever sent.</p>
+      </div>
+      <div class="mts reveal d2">
+        <div class="mts-k">Send</div>
+        <div class="mts-s">Go To The Nations</div>
+        <p>We build teams by destination and send them out — short-term first, with a path toward 1–2 years and a lifetime on the field.</p>
+      </div>
+    </div>
     <p class="verse-inline reveal d3">&ldquo;Here I am. Send me.&rdquo; <span class="ref">— Isaiah 6:8</span></p>
   </div>
 </section>
@@ -704,6 +776,48 @@
   </div>
 </section>
 
+<!-- ================= INTO THE WORLD (program) ================= -->
+<section class="into" id="into">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">The Program The Night Launches</p>
+      <h2>Into The World</h2>
+      <p class="head-lead">SVM's flagship mission program — a pathway that sends students on short-, mid-, and long-term trips. You serve through English and Bible ministry and cross-cultural discipleship, and every trip is a step toward a lifetime on mission.</p>
+    </div>
+    <div class="into-top">
+      <div class="reveal">
+        <h3 class="col-title">On the field, you'll…</h3>
+        <ul class="field-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Teach English through daily conversation sessions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Serve alongside local churches &amp; missionaries</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Share the gospel &amp; lead Bible-based lessons</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Experience cross-cultural discipleship &amp; worship</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Build relationships with local students &amp; youth</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Discover your own calling in God's mission</li>
+        </ul>
+      </div>
+      <div class="provide reveal d1">
+        <h4>Fully provided on the field</h4>
+        <ul>
+          <li><span class="dot">+</span><span><b>Housing</b> and all meals</span></li>
+          <li><span class="dot">+</span><span>Ministry and activity costs</span></li>
+          <li><span class="dot">+</span><span>Local staff support, orientation and guidance</span></li>
+        </ul>
+        <h4 class="alt">What you bring</h4>
+        <ul>
+          <li><span class="dot">·</span><span>Round-trip <b>airfare</b></span></li>
+          <li><span class="dot">·</span><span>Personal spending money and a valid passport</span></li>
+          <li><span class="dot">·</span><span>A teachable, willing heart</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="train-note reveal">
+      <b>We train before we send.</b> Everyone preparing to go meets weekly — worship, team building,
+      teaching practice, and cross-cultural readiness — so no one steps onto the field unprepared.
+    </p>
+  </div>
+</section>
+
 <!-- ================= WHO'S BEHIND IT ================= -->
 <section class="org" id="host">
   <div class="wrap">
@@ -746,6 +860,22 @@
   </div>
 </section>
 
+<!-- ================= THREE WAYS TO JOIN ================= -->
+<section class="join" id="join">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Not Only For Those Who Go</p>
+      <h2>Three Ways To Join</h2>
+      <p class="head-lead">This is for the student who senses there's more to their faith than Sunday — and for every leader and church who longs to see this generation sent, not just seated.</p>
+    </div>
+    <div class="join-grid">
+      <div class="join-card reveal"><div class="jk">Go</div><p>Come to a gathering, join a team, and take your first step toward the nations.</p></div>
+      <div class="join-card reveal d1"><div class="jk">Pray</div><p>Stand behind the students God is calling, and pray this generation would be sent.</p></div>
+      <div class="join-card reveal d2"><div class="jk">Send</div><p>Partner with us — your church, your resources, and your network open the door for others to go.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FAQ ================= -->
 <section class="faq" id="faq">
   <div class="wrap">
@@ -756,7 +886,7 @@
     <div class="faq-list reveal d1">
       <details>
         <summary>What is SVM?<span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>The Student Volunteer Movement — a 150-year-old student mission movement that once sent tens of thousands to the nations, now being re-ignited for today. It's independent and campus-based, supported by local churches and IM Mission.</p></div>
+        <div class="faq-a"><p>The Student Volunteer Movement — an independent, campus-based mission movement that exists to do one thing: raise up this generation of students and send them to the nations. It's not a club or a single church's program; local churches and the IM Mission network stand behind it together, so that any student who says &ldquo;I'll go&rdquo; has a real, open door in front of them.</p></div>
       </details>
       <details>
         <summary>Who is the conference for?<span class="chev" aria-hidden="true"></span></summary>
@@ -765,6 +895,10 @@
       <details>
         <summary>How much does it cost?<span class="chev" aria-hidden="true"></span></summary>
         <div class="faq-a"><p>The conference is <strong>free to attend</strong>. For the mission trips that follow, you cover your flight — housing and on-field costs are covered, with no agency fees.</p></div>
+      </details>
+      <details>
+        <summary>What will I actually do on a trip?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>You'll teach English through daily conversation sessions, serve alongside local churches and missionaries, share the gospel and lead Bible-based lessons, and build relationships with local students — while being discipled yourself. Trips run during school breaks (December, January, and May–August), and you can stay anywhere from a week to a full year.</p></div>
       </details>
       <details>
         <summary>Do I have to commit to going overseas?<span class="chev" aria-hidden="true"></span></summary>
