@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/svg+xml" href="assets/logo/SVM_Logo.svg" />
 <title>SVM Mission Conference 2026 · Called. Equipped. Sent.</title>
-<meta name="description" content="SVM Mission Conference 2026 — Ignite your faith. Impact the nations. Friday, November 20, 2026 · 6:00 PM · Texas A&M University, Bryan-College Station, TX. For youth & young adults. Register now — spots are limited." />
+<meta name="description" content="SVM Mission Conference 2026 — the public launch of the Student Volunteer Movement, re-ignited. Friday, November 20, 2026 · 6:00 PM · Bryan–College Station, TX (venue to be announced). For students & young adults. Register free." />
 
 <!-- ===== Open Graph / social ===== -->
 <meta property="og:title" content="SVM Mission Conference 2026 · Called. Equipped. Sent." />
-<meta property="og:description" content="SVM Mission Conference 2026 — ignite your faith, impact the nations. Nov 20, 2026 · Texas A&M University." />
+<meta property="og:description" content="The public launch of the Student Volunteer Movement, re-ignited. Nov 20, 2026 · Bryan–College Station, TX." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/images/hero.jpg" />
 
@@ -330,8 +330,90 @@
     background:linear-gradient(180deg,rgba(12,28,52,.1),rgba(12,28,52,.45))}
 
   /* ============================================================
+     NAV LINKS
+     ============================================================ */
+  .nav-links{display:flex;gap:clamp(16px,2.2vw,32px);margin-left:auto;margin-right:clamp(18px,3vw,38px)}
+  .nav-links a{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:1.5px;font-size:.92rem;color:var(--cream-dim);position:relative;padding:4px 0;transition:color .2s var(--ease)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--orange);transition:width .25s var(--ease)}
+  .nav-links a:hover{color:var(--cream)}
+  .nav-links a:hover::after{width:100%}
+
+  /* shared section lead paragraph */
+  .section-head .head-lead{max-width:54ch;margin:1em auto 0;color:var(--cream-dim);
+    font-size:clamp(1.02rem,2.2vw,1.18rem);line-height:1.65}
+
+  /* ============================================================
+     THE MOVEMENT
+     ============================================================ */
+  .movement{padding:clamp(64px,10vw,126px) 0;text-align:center}
+  .movement .kicker{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:4px;
+    color:var(--orange);font-weight:600;font-size:clamp(.9rem,2.2vw,1.05rem)}
+  .watchword{font-family:"Anton",sans-serif;font-weight:400;line-height:1.04;border:none;
+    font-size:clamp(2rem,5.6vw,4.2rem);margin:.42em auto .1em;max-width:17ch;letter-spacing:.5px}
+  .movement .lead{max-width:60ch;margin:1.35em auto 0;color:var(--cream-dim);
+    font-size:clamp(1.05rem,2.3vw,1.26rem);line-height:1.72}
+  .movement .lead strong{color:var(--cream)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,30px);
+    margin-top:clamp(44px,6vw,74px);border-top:1px solid rgba(243,239,230,.12);padding-top:clamp(36px,5vw,56px)}
+  .stat .n{font-family:"Anton",sans-serif;color:var(--orange);font-size:clamp(2rem,5vw,3.4rem);line-height:1}
+  .stat .l{margin-top:8px;font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;
+    letter-spacing:2px;font-size:clamp(.76rem,1.8vw,.95rem);color:var(--cream-dim)}
+
+  /* ============================================================
+     THE NIGHT (evening flow)
+     ============================================================ */
+  .flow{padding:clamp(60px,9vw,110px) 0}
+  .flow-list{list-style:none;max-width:760px;margin:0 auto}
+  .flow-step{display:flex;gap:clamp(18px,3vw,32px);align-items:flex-start;
+    padding:clamp(22px,3.2vw,30px) 0;border-bottom:1px solid rgba(243,239,230,.1)}
+  .flow-step:last-child{border-bottom:none}
+  .flow-step .step-n{font-family:"Anton",sans-serif;color:rgba(242,103,34,.85);
+    font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1;min-width:1.7em;flex-shrink:0}
+  .flow-step h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:.5px;font-size:clamp(1.3rem,2.8vw,1.7rem)}
+  .flow-step p{margin-top:5px;color:var(--cream-dim);font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.6}
+
+  /* ============================================================
+     ORGANIZATION
+     ============================================================ */
+  .org{background:var(--navy-2);padding:clamp(60px,9vw,110px) 0}
+  .org-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.4vw,24px)}
+  .org-card{background:linear-gradient(165deg,var(--navy-3),rgba(19,40,70,.4));
+    border:1px solid rgba(243,239,230,.08);border-radius:16px;padding:clamp(24px,3vw,30px)}
+  .org-icon{width:52px;height:52px;border-radius:12px;background:rgba(242,103,34,.14);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .org-icon svg{width:26px;height:26px;stroke:var(--orange)}
+  .org-card h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.3px}
+  .org-card p{margin-top:8px;color:var(--cream-dim);font-size:.97rem;line-height:1.55}
+  .cohosts{text-align:center;margin-top:clamp(34px,5vw,52px);color:var(--cream-dim);
+    font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:clamp(.92rem,2vw,1.08rem)}
+  .cohosts b{color:var(--cream);font-weight:700}
+
+  /* ============================================================
+     FAQ
+     ============================================================ */
+  .faq{padding:clamp(60px,9vw,110px) 0}
+  .faq-list{max-width:760px;margin:0 auto}
+  .faq-list details{border:1px solid rgba(243,239,230,.1);border-radius:14px;
+    background:var(--navy-2);margin-bottom:14px;overflow:hidden;transition:border-color .25s var(--ease)}
+  .faq-list details[open]{border-color:rgba(242,103,34,.4)}
+  .faq-list summary{list-style:none;cursor:pointer;padding:clamp(18px,2.6vw,24px) clamp(20px,3vw,28px);
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+    font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--cream)}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list .chev{width:13px;height:13px;border-right:2.5px solid var(--orange);border-bottom:2.5px solid var(--orange);
+    transform:rotate(45deg);transition:transform .25s var(--ease);flex-shrink:0;margin-top:-4px}
+  .faq-list details[open] .chev{transform:rotate(-135deg);margin-top:4px}
+  .faq-a{padding:0 clamp(20px,3vw,28px) clamp(20px,2.8vw,26px)}
+  .faq-a p{color:var(--cream-dim);font-size:clamp(1rem,2.1vw,1.1rem);line-height:1.65}
+  .faq-a strong{color:var(--cream)}
+
+  /* ============================================================
      RESPONSIVE
      ============================================================ */
+  @media (max-width:980px){ .nav-links{display:none} }
   @media (max-width:880px){
     .info-grid{grid-template-columns:1fr}
     .pillar-grid{grid-template-columns:repeat(2,1fr)}
@@ -343,9 +425,12 @@
     .reg-copy p{margin-left:auto;margin-right:auto}
     .reg-copy ul{align-items:center}
     .nav-cta{display:none}
+    .stats{grid-template-columns:repeat(2,1fr);gap:28px}
+    .org-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:520px){
     .pillar-grid{grid-template-columns:1fr}
+    .org-grid{grid-template-columns:1fr}
     .hero .year{transform:translateY(-.15em)}
   }
 </style>
@@ -357,6 +442,13 @@
   <a href="#" class="logo" aria-label="SVM — Student Volunteer Movement">
     <img src="assets/logo/SVM_Logo_white.svg" alt="SVM" width="1110" height="620" />
   </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#movement">The Movement</a>
+    <a href="#the-night">The Night</a>
+    <a href="#nations">Tent Village</a>
+    <a href="#host">Who's Behind It</a>
+    <a href="#faq">FAQ</a>
+  </nav>
   <a href="#register" class="nav-cta">Register</a>
 </header>
 
@@ -406,8 +498,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="label">Where</div>
-        <div class="big">Texas A&amp;M University</div>
-        <div class="sub">Bryan-College Station, TX</div>
+        <div class="big">Bryan–College Station</div>
+        <div class="sub">Texas · <span class="accent">venue announced soon</span></div>
       </div>
       <div class="info-card reveal d2">
         <div class="info-icon">
@@ -417,6 +509,30 @@
         <div class="big">Youth &amp; Young Adults</div>
         <div class="sub">Students &amp; young adults who want <span class="accent">more.</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE MOVEMENT ================= -->
+<section class="movement" id="movement">
+  <div class="wrap">
+    <div class="movement-head">
+      <p class="kicker reveal">A 150-Year-Old Movement, Re-Ignited</p>
+      <blockquote class="watchword reveal d1">
+        &ldquo;The evangelization of the world<br/><span class="accent">in this generation.</span>&rdquo;
+      </blockquote>
+      <p class="lead reveal d2">
+        In 1886, the Student Volunteer Movement sent more than 20,000 students from their campuses
+        to the nations under that single cry. We are re-igniting it for today — an independent,
+        campus-based sending movement, supported by local churches and IM Mission, that raises,
+        trains, and sends the next generation. <strong>SVM Mission Conference 2026 is its public launch.</strong>
+      </p>
+    </div>
+    <div class="stats reveal d3">
+      <div class="stat"><div class="n">1886</div><div class="l">Where it began</div></div>
+      <div class="stat"><div class="n">20,000+</div><div class="l">Students sent</div></div>
+      <div class="stat"><div class="n">5+</div><div class="l">Nations open now</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">Generation — ours</div></div>
     </div>
   </div>
 </section>
@@ -444,39 +560,72 @@
 <section class="pillars">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="kicker">Mobilize &middot; Train &middot; Send</p>
-      <h2>One Night Can Change Your World</h2>
+      <p class="kicker">How The Movement Works</p>
+      <h2>Not Another Conference. A Pathway.</h2>
+      <p class="head-lead">SVM doesn't end when the lights come up. It's a sending model built to carry a student from a first short trip all the way to a life on the field.</p>
     </div>
     <div class="pillar-grid">
       <div class="pillar reveal">
         <div class="p-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <h3>Go Global</h3>
-        <p>Two mission trips every year. Reach the nations, not just talk about them.</p>
+        <h3>A Global Network</h3>
+        <p>Korea, the Philippines, Malaysia, Thailand, Mexico and more — fields already open, with teams on the ground.</p>
       </div>
       <div class="pillar reveal d1">
         <div class="p-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
         </div>
-        <h3>You Pay Flight</h3>
-        <p>You cover the airfare — we cover the rest. Zero agency fees. Go anywhere. Anytime.</p>
+        <h3>Only Pay Your Flight</h3>
+        <p>You cover the airfare. Housing and on-field costs are covered, and there are no agency fees.</p>
       </div>
       <div class="pillar reveal d2">
         <div class="p-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
-        <h3>Get Equipped</h3>
-        <p>Real training. Real experience. Real impact. We prepare you before we send you.</p>
+        <h3>Trained Before Sent</h3>
+        <p>Weekly discipleship and evangelism prepare you first. No one is sent out unprepared.</p>
       </div>
       <div class="pillar reveal d3">
         <div class="p-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </div>
-        <h3>Be Sent</h3>
-        <p>Step out in faith. Change lives. Change eternity. This is where it begins.</p>
+        <h3>A Lifelong Path</h3>
+        <p>Short-term, then one to two years, then a career on the field — at the pace God sets for you.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= THE NIGHT (evening flow) ================= -->
+<section class="flow" id="the-night">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Friday, November 20 · Doors 6:00 PM</p>
+      <h2>What The Night Looks Like</h2>
+    </div>
+    <ol class="flow-list">
+      <li class="flow-step reveal">
+        <span class="step-n">01</span>
+        <div><h3>Tent Village</h3><p>Doors open early. Walk the nations tent by tent and meet the teams already on the field.</p></div>
+      </li>
+      <li class="flow-step reveal d1">
+        <span class="step-n">02</span>
+        <div><h3>Worship</h3><p>A room full of students lifting one voice — the heartbeat of the night.</p></div>
+      </li>
+      <li class="flow-step reveal d2">
+        <span class="step-n">03</span>
+        <div><h3>The Word</h3><p>A clear, challenging call from Scripture to carry the gospel to the nations.</p></div>
+      </li>
+      <li class="flow-step reveal d3">
+        <span class="step-n">04</span>
+        <div><h3>The Vision</h3><p>Where SVM is going, how the sending pathway works, and where you fit in it.</p></div>
+      </li>
+      <li class="flow-step reveal d4">
+        <span class="step-n">05</span>
+        <div><h3>The Sending</h3><p>Respond, commit a nation, and take your first real step that same night.</p></div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -551,6 +700,84 @@
         <div class="moment reveal d2"><img src="assets/images/tile-arms.jpg" alt="Arms raised toward the stage" loading="lazy" decoding="async" /></div>
         <div class="moment reveal d3"><img src="assets/images/tile-stage.jpg" alt="Stage lights over a packed crowd" loading="lazy" decoding="async" /></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO'S BEHIND IT ================= -->
+<section class="org" id="host">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Who's Behind It</p>
+      <h2>An Independent Movement, Backed By The Church</h2>
+      <p class="head-lead">SVM is a campus-based sending movement — not owned by any one church. It is led by a team of co-directors and carried by local churches and IM Mission together.</p>
+    </div>
+    <div class="org-grid">
+      <div class="org-card reveal">
+        <div class="org-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Core Directors</h3>
+        <p>Three co-equal leaders — pastors and a Texas A&amp;M campus student leader — sharing the vision, the finances, and the oversight.</p>
+      </div>
+      <div class="org-card reveal d1">
+        <div class="org-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </div>
+        <h3>Supporting Partners</h3>
+        <p>Local churches and IM Mission stand behind the movement with prayer, funding, and a global field network.</p>
+      </div>
+      <div class="org-card reveal d2">
+        <div class="org-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <h3>Four Teams, All Year</h3>
+        <p>Mobilize, Train, Send, and Tell the Story — the teams that carry the work long after the conference ends.</p>
+      </div>
+      <div class="org-card reveal d3">
+        <div class="org-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <h3>Host Committee</h3>
+        <p>A committee of respected regional leaders helps guide the movement, lend credibility, and open doors across the community.</p>
+      </div>
+    </div>
+    <p class="cohosts reveal">Co-hosted by <b>IM Friend Baptist</b> · <b>First Baptist Church, Normangee</b> · <b>Country Fellowship</b></p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Before You Come</p>
+      <h2>Questions, Answered</h2>
+    </div>
+    <div class="faq-list reveal d1">
+      <details>
+        <summary>What is SVM?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>The Student Volunteer Movement — a 150-year-old student mission movement that once sent tens of thousands to the nations, now being re-ignited for today. It's independent and campus-based, supported by local churches and IM Mission.</p></div>
+      </details>
+      <details>
+        <summary>Who is the conference for?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Students and young adults — from high schoolers to young professionals — and the leaders who invest in them. If the nations stir something in you, this night is for you.</p></div>
+      </details>
+      <details>
+        <summary>How much does it cost?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>The conference is <strong>free to attend</strong>. For the mission trips that follow, you cover your flight — housing and on-field costs are covered, with no agency fees.</p></div>
+      </details>
+      <details>
+        <summary>Do I have to commit to going overseas?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>No. Come to worship, walk the tent village, and simply see. Take a next step only if — and when — you're ready.</p></div>
+      </details>
+      <details>
+        <summary>Where exactly will it be held?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>In Bryan–College Station, Texas. The exact venue is being finalized and will be announced soon — register and we'll email you the details first.</p></div>
+      </details>
+      <details>
+        <summary>Who is hosting it?<span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>IM Mission Foundation, together with co-hosting churches and a committee of regional leaders. SVM is an independent movement the churches support — not a single church's event.</p></div>
+      </details>
     </div>
   </div>
 </section>
