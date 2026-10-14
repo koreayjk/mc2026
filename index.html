@@ -20,7 +20,7 @@
 <!-- ===== Fonts ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- ===== Supabase JS ===== -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -58,7 +58,7 @@
 
   h1,h2,h3,.condensed{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;line-height:.95}
   .impact{font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:.5px}
-  .brush{font-family:"Fraunces","Georgia",serif;font-style:italic;font-weight:600}
+  .brush{font-family:"DM Serif Display","Georgia",serif;font-style:italic;font-weight:400}
 
   .accent{color:var(--orange)}
 
@@ -116,13 +116,6 @@
   /* fine film grain for a less-flat, premium finish */
   .hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  /* editorial inset frame + corner index labels for a gallery-grade finish */
-  .hero-frame{position:absolute;inset:clamp(14px,1.8vw,26px);z-index:2;pointer-events:none;
-    border:1px solid rgba(243,239,230,.16);border-radius:3px}
-  .hero-frame span{position:absolute;font-family:"Barlow Condensed",sans-serif;font-weight:600;
-    text-transform:uppercase;letter-spacing:3px;font-size:.72rem;color:rgba(243,239,230,.55)}
-  .hero-frame .tl{top:14px;left:16px}
-  .hero-frame .br{bottom:14px;right:16px}
   .hero .wrap{position:relative;z-index:3;width:100%}
 
   .eyebrow{display:inline-flex;align-items:center;gap:clamp(12px,1.6vw,18px);
@@ -133,18 +126,19 @@
   .eyebrow .since{position:relative;margin-left:.6em;padding-left:1.05em;color:var(--orange);white-space:nowrap}
   .eyebrow .since::before{content:"";position:absolute;left:0;top:50%;width:.6em;height:1px;background:rgba(243,239,230,.45)}
 
-  .hero h1{margin:.32em 0 0}
-  /* line-height must stay >= .96 here: Anton's caps overflow a shorter line box */
-  .hero .mission{display:block;font-family:"Anton",sans-serif;font-size:clamp(4.4rem,19vw,12.5rem);letter-spacing:3px;
-    color:var(--cream);line-height:.96;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+  .hero h1{margin:.5em 0 0}
+  /* the SVM logo mark replaces the wordmark as the hero's focal point */
+  .hero .mission-logo{display:block}
+  .hero .mission-logo img{display:block;width:clamp(260px,52vw,580px);height:auto;
+    filter:drop-shadow(0 10px 44px rgba(0,0,0,.5))}
   .hero .conf-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:.1em .5em;margin-top:.22em}
-  /* elegant high-contrast serif italic — a refined counterpoint to the Anton wordmark */
-  .hero .conference{font-family:"Fraunces","Georgia",serif;font-style:italic;font-weight:600;color:var(--orange);
-    font-size:clamp(1.9rem,6.6vw,4.6rem);line-height:1;letter-spacing:-.5px;text-shadow:0 3px 22px rgba(0,0,0,.4)}
+  /* dramatic high-contrast display serif — a refined counterpoint to the logo mark */
+  .hero .conference{font-family:"DM Serif Display","Georgia",serif;font-style:italic;font-weight:400;color:var(--orange);
+    font-size:clamp(2rem,7vw,4.9rem);line-height:1;letter-spacing:0;text-shadow:0 3px 22px rgba(0,0,0,.4)}
   /* small outlined year tag, set in the same serif so the line reads as one unit */
-  .hero .year{font-family:"Fraunces","Georgia",serif;font-style:italic;font-weight:500;color:var(--cream);
-    font-size:clamp(1rem,3vw,1.8rem);letter-spacing:.5px;border:1px solid rgba(243,239,230,.4);
-    background:rgba(8,17,32,.3);padding:.05em .5em;border-radius:999px;transform:translateY(-.15em)}
+  .hero .year{font-family:"DM Serif Display","Georgia",serif;font-style:italic;font-weight:400;color:var(--cream);
+    font-size:clamp(1rem,3vw,1.85rem);letter-spacing:.5px;border:1px solid rgba(243,239,230,.4);
+    background:rgba(8,17,32,.3);padding:.04em .52em;border-radius:999px;transform:translateY(-.15em)}
   .hero .tagline{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
     letter-spacing:4px;font-size:clamp(1rem,3.2vw,1.8rem);margin-top:.7em;color:var(--cream)}
   .hero .tagline .dot{color:var(--orange)}
@@ -541,12 +535,11 @@
   </div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-frame" aria-hidden="true"></div>
 
   <div class="wrap">
     <p class="eyebrow reveal">Student Volunteer Movement <span class="since">Since 1886</span></p>
     <h1 class="reveal d1">
-      <span class="mission impact">SVM</span>
+      <span class="mission-logo"><img src="assets/logo/SVM_Logo_white.svg" alt="SVM" width="1110" height="620" /></span>
       <span class="conf-row">
         <span class="conference">Mission Conference</span>
         <span class="year">2026</span>
