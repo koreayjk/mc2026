@@ -97,47 +97,64 @@
   /* ============================================================
      HERO
      ============================================================ */
-  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 0 60px}
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-  /* navy duotone wash so the bright sky still reads behind cream type */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:132px 0 84px}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;
+    transform:scale(1.08);animation:heroZoom 20s ease-out forwards}
+  @keyframes heroZoom{to{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.hero-bg img{animation:none;transform:none}}
+  /* layered wash: directional darkening for legibility + a warm glow behind the
+     wordmark + a vignette that fades into the next section */
   .hero-overlay{position:absolute;inset:0;z-index:1;
     background:
-      linear-gradient(90deg,rgba(12,28,52,.93) 0%,rgba(12,28,52,.80) 42%,rgba(12,28,52,.46) 72%,rgba(12,28,52,.62) 100%),
-      linear-gradient(180deg,rgba(10,23,41,.72) 0%,rgba(10,23,41,.30) 38%,rgba(10,23,41,.55) 78%,rgba(12,28,52,.95) 100%)}
+      radial-gradient(85% 75% at 26% 44%, rgba(242,103,34,.20) 0%, rgba(242,103,34,0) 52%),
+      linear-gradient(94deg, rgba(8,17,32,.95) 0%, rgba(9,20,38,.84) 40%, rgba(10,23,41,.44) 72%, rgba(10,23,41,.60) 100%),
+      linear-gradient(180deg, rgba(8,17,32,.74) 0%, rgba(8,17,32,.12) 30%, rgba(8,17,32,.40) 66%, var(--navy) 100%)}
+  /* fine film grain for a less-flat, premium finish */
+  .hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .hero .wrap{position:relative;z-index:2;width:100%}
 
-  .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;
-    font-size:clamp(.85rem,2.2vw,1.15rem);color:var(--cream)}
-  /* "Since 1886" rides the eyebrow as a rule-separated tag, so the heritage
-     reads as a credential rather than competing with the SVM wordmark */
-  .eyebrow .since{position:relative;margin-left:.9em;padding-left:1.05em;color:var(--orange);white-space:nowrap}
-  .eyebrow .since::before{content:"";position:absolute;left:0;top:50%;width:.6em;height:1px;
-    background:rgba(243,239,230,.45)}
-  .hero h1{margin:.28em 0 0}
-  /* line-height must stay >= 1 here: Anton's caps overflow a shorter line box
-     and collide with the eyebrow above and the script line below */
-  /* "SVM" is only 3 glyphs, so it carries a much larger size than a full word */
-  .hero .mission{display:block;font-family:"Anton",sans-serif;font-size:clamp(4.4rem,19vw,12rem);letter-spacing:2px;
-    color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.5);line-height:1}
-  .hero .conf-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:.1em .35em;margin-top:.08em}
+  .eyebrow{display:inline-flex;align-items:center;gap:clamp(12px,1.6vw,18px);
+    font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:3px;
+    font-size:clamp(.8rem,2vw,1.08rem);color:var(--cream)}
+  .eyebrow::before{content:"";width:clamp(26px,5vw,54px);height:2px;background:var(--orange);flex-shrink:0}
+  /* "Since 1886" rides the eyebrow as a rule-separated tag, a credential beside the name */
+  .eyebrow .since{position:relative;margin-left:.6em;padding-left:1.05em;color:var(--orange);white-space:nowrap}
+  .eyebrow .since::before{content:"";position:absolute;left:0;top:50%;width:.6em;height:1px;background:rgba(243,239,230,.45)}
+
+  .hero h1{margin:.32em 0 0}
+  /* line-height must stay >= .96 here: Anton's caps overflow a shorter line box */
+  .hero .mission{display:block;font-family:"Anton",sans-serif;font-size:clamp(4.4rem,19vw,12.5rem);letter-spacing:3px;
+    color:var(--cream);line-height:.96;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+  .hero .conf-row{display:flex;align-items:center;flex-wrap:wrap;gap:.12em .4em;margin-top:.12em}
   .hero .conference{font-family:"Permanent Marker",cursive;color:var(--orange);
-    font-size:clamp(1.65rem,6.2vw,4.2rem);line-height:1.05;text-shadow:0 3px 18px rgba(0,0,0,.45)}
-  .hero .year{font-family:"Anton",sans-serif;color:var(--cream);font-size:clamp(1.6rem,6vw,3.4rem);
-    background:var(--navy-3);padding:.05em .3em;border-radius:8px;transform:translateY(-.25em);
-    box-shadow:0 6px 20px rgba(0,0,0,.4)}
+    font-size:clamp(1.6rem,6vw,4rem);line-height:1.05;text-shadow:0 3px 20px rgba(0,0,0,.45)}
+  /* glass-outlined year badge reads more refined than a solid block */
+  .hero .year{font-family:"Anton",sans-serif;color:var(--cream);font-size:clamp(1.3rem,4.4vw,2.6rem);letter-spacing:1px;
+    border:2px solid rgba(243,239,230,.45);background:rgba(8,17,32,.35);padding:.06em .32em;border-radius:10px}
   .hero .tagline{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;
-    letter-spacing:3px;font-size:clamp(1rem,3.4vw,1.9rem);margin-top:.5em;color:var(--cream)}
+    letter-spacing:4px;font-size:clamp(1rem,3.2vw,1.8rem);margin-top:.7em;color:var(--cream)}
   .hero .tagline .dot{color:var(--orange)}
-  .hero-actions{margin-top:2rem;display:flex;gap:14px;flex-wrap:wrap}
+
+  .hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px clamp(14px,2vw,20px);margin-top:1.5em;
+    font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2px;
+    font-size:clamp(.8rem,1.9vw,1rem);color:var(--cream)}
+  .hero-meta .mi{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta svg{width:16px;height:16px;stroke:var(--orange);fill:none;flex-shrink:0}
+  .hero-meta .sep{width:5px;height:5px;border-radius:50%;background:rgba(243,239,230,.4)}
+
+  .hero-actions{margin-top:2.1rem;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .btn{
     font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
-    font-size:1.05rem;padding:14px 30px;border-radius:8px;border:2px solid transparent;cursor:pointer;
-    transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease);display:inline-block}
-  .btn-primary{background:var(--orange);color:#fff}
-  .btn-primary:hover{transform:translateY(-3px);background:var(--orange-light);box-shadow:0 12px 30px rgba(242,103,34,.4)}
-  .btn-ghost{background:transparent;color:var(--cream);border-color:rgba(243,239,230,.5)}
+    font-size:1.05rem;padding:15px 32px;border-radius:10px;border:2px solid transparent;cursor:pointer;
+    transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease),box-shadow .2s var(--ease);display:inline-block}
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 10px 30px rgba(242,103,34,.32)}
+  .btn-primary:hover{transform:translateY(-3px);background:var(--orange-light);box-shadow:0 16px 38px rgba(242,103,34,.45)}
+  .btn-ghost{background:rgba(243,239,230,.04);color:var(--cream);border-color:rgba(243,239,230,.45);backdrop-filter:blur(2px)}
   .btn-ghost:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-3px)}
+  .hero-note{margin-top:1.15em;color:var(--cream-dim);font-size:.92rem;letter-spacing:.3px}
+  .hero-note b{color:var(--cream);font-weight:600}
 
   .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;
     font-family:"Barlow Condensed",sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:.8rem;
@@ -511,6 +528,7 @@
     </picture>
   </div>
   <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
 
   <div class="wrap">
     <p class="eyebrow reveal">Student Volunteer Movement <span class="since">Since 1886</span></p>
@@ -522,10 +540,18 @@
       </span>
     </h1>
     <p class="tagline reveal d2">Called<span class="dot">.</span> Equipped<span class="dot">.</span> Sent<span class="dot">.</span></p>
-    <div class="hero-actions reveal d3">
-      <a href="#register" class="btn btn-primary">Register Now</a>
-      <a href="#nations" class="btn btn-ghost">See The Tent Village</a>
+    <div class="hero-meta reveal d2">
+      <span class="mi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Fri · Nov 20, 2026</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="mi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Doors 6:00 PM</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="mi"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bryan–College Station, TX</span>
     </div>
+    <div class="hero-actions reveal d3">
+      <a href="#register" class="btn btn-primary">Register Free &rarr;</a>
+      <a href="#movement" class="btn btn-ghost">See The Vision</a>
+    </div>
+    <p class="hero-note reveal d3"><b>Free to attend</b> · For students &amp; young adults · Everyone welcome</p>
   </div>
 
   <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
